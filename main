@@ -1,0 +1,400 @@
+//The Variables are at the beginning for organization
+var bee = createSprite(200,200);
+var honey = createSprite(200,385);
+var honey2 = createSprite(150,385);
+var honey3 = createSprite(250, 385);
+var honey4 = createSprite(300, 385);
+var honey5 = createSprite(100, 385);
+var honey6 = createSprite(50, 385);
+var honey7 = createSprite(350, 385);
+var honey8 = createSprite(0, 385);
+var honey9 = createSprite(400, 385);
+var rain = createSprite(randomNumber(1, 400), 0);
+var rain2 = createSprite(randomNumber(1, 400), 0);
+var rain3 = createSprite(randomNumber(1, 400), 0);
+var gameOver = createSprite(200, 800);
+//This uses a LIST to create the score by using "list.length"
+var list = ["1", "1", "1", "1", "1"];
+var number = list.length;
+//This is a global variable
+var scale = 0.1;
+//The functions are place at the beginning for organization
+//This is the parameter input
+draw(400);
+drawHoney();
+drawRain();
+//This function draws the honey and sets their scale
+function drawHoney()
+{
+//This function uses a global variable
+honey.setAnimation("honey");
+honey.scale = scale;
+honey2.setAnimation("honey2");
+honey2.scale = scale;
+honey3.setAnimation("honey3");
+honey3.scale = scale;
+honey4.setAnimation("honey4");
+honey4.scale = scale;
+honey5.setAnimation("honey5");
+honey5.scale = scale;
+honey6.setAnimation("honey6");
+honey6.scale = scale;
+honey7.setAnimation("honey7");
+honey7.scale = scale;
+honey8.setAnimation("honey8");
+honey8.scale = scale;
+honey9.setAnimation("honey9");
+honey9.scale = scale;
+
+// This calls a function within another function
+drawRain();
+}
+bee.setAnimation("bee_1");
+//This function moves the bee and uses a parameter
+function beeMovement(fourHun) {
+  if (bee.x <= 0)
+  {
+  bee.x = fourHun;
+  } else if (bee.x >= fourHun)
+  {
+  bee.x = World.mouseX;
+  bee.x = 0;
+  } else if (bee.y <=0)
+  {
+  bee.y = fourHun;
+  } else if (bee.y >=fourHun)
+  {
+  bee.y = 0;
+  }
+}
+
+//This draws the rain droplet
+function drawRain()
+{
+//This utilizes a local variable
+  var rainScale = 0.05;
+  drawSprites();
+  rain.setAnimation("rain");
+  rain.scale = rainScale;
+  rain2.setAnimation("rain");
+  rain2.scale = rainScale;
+  rain3.setAnimation("rain");
+  rain3.scale = rainScale;
+// This makes the rain fall, especially at random velocities
+  
+  if (rain.y <= 400)
+  {
+  rain.velocityY = randomNumber(4, 5);
+  } 
+  if (rain2.y < 400)
+  {
+  rain2.velocityY = randomNumber(4, 5);
+  } 
+  if (rain3.y < 400)
+  {
+  rain3.velocityY = randomNumber(4, 5);
+  }
+}
+// This makes the rain fall faster at 40 seconds
+ if (World.seconds > 39)
+{
+ if (rain.y <= 400)
+  {
+  rain.velocityY = randomNumber(6, 7);
+  } 
+  if (rain2.y < 400)
+  {
+  rain2.velocityY = randomNumber(6, 7);
+  } 
+  if (rain3.y < 400)
+  {
+  rain3.velocityY = randomNumber(6, 7);
+  }
+}  
+
+  
+//This function resets the rain whenever it touches the honey
+//This function also decreases the "lives" whenever the rain touches the honey
+function rainAndHoney ()
+{ 
+//This function uses a for loop to repeat the rain drops
+  for (var i = 0; i < number; i++) {
+//This function uses numerous while loops
+  while ((rain.isTouching(honey)))
+  {
+  number = number - 1;  
+  rain.y = -5;
+  rain.x = randomNumber(0, 400);
+  }
+  while (rain.isTouching(honey2))
+  {
+  number = number - 1;  
+  rain.y = -5;
+  rain.x = randomNumber(0, 400);
+  }
+  while (rain.isTouching(honey3))
+  {
+  number = number - 1;  
+  rain.y = -5;
+  rain.x = (0, 400);
+  }
+  while (rain.isTouching(honey4))
+  {
+  number = number - 1;  
+  rain.y = -5;
+  rain.x = randomNumber(0, 400);
+  }
+  while (rain.isTouching(honey5))
+  {
+  number = number - 1;  
+  rain.y = -5;
+  rain.x = randomNumber(0, 400);
+  }
+  while (rain.isTouching(honey6))
+  {
+  number = number - 1;  
+  rain.y = -5;
+  rain.x = randomNumber(0, 400);
+  }
+  while (rain.isTouching(honey7))
+  {
+  number = number - 1;  
+  rain.y = -5;
+  rain.x = randomNumber(0, 400);
+  }
+  while (rain.isTouching(honey8))
+  {
+  number = number - 1;   
+  rain.y = -5;
+  rain.x = randomNumber(0, 400);
+  }
+  while (rain.isTouching(honey9))
+  {
+  number = number - 1;    
+  rain.y = -5;
+  rain.x = randomNumber(0, 400);
+  }
+  if (rain2.isTouching(honey))
+  {
+  number = number - 1;    
+  rain2.y = -5;
+  rain2.x = randomNumber(0, 400);
+  }
+  if (rain2.isTouching(honey2))
+  {
+  number = number - 1;   
+  rain2.y = -5;
+  rain2.x = randomNumber(0, 400);
+  }
+  if (rain2.isTouching(honey3))
+  {
+  number = number - 1;    
+  rain2.y = -5;
+  rain2.x = (0, 400);
+  }
+  if (rain2.isTouching(honey4))
+  {
+  number = number - 1;    
+  rain2.y = -5;
+  rain2.x = randomNumber(0, 400);
+  }
+  if (rain2.isTouching(honey5))
+  {
+  number = number - 1;    
+  rain2.y = -5;
+  rain2.x = randomNumber(0, 400);
+  }
+  if (rain2.isTouching(honey6))
+  {
+  number = number - 1;    
+  rain2.y = -5;
+  rain2.x = randomNumber(0, 400);
+  }
+  if (rain2.isTouching(honey7))
+  {
+  number = number - 1;    
+  rain2.y = -5;
+  rain2.x = randomNumber(0, 400);
+  }
+  if (rain2.isTouching(honey8))
+  {
+  number = number - 1;    
+  rain2.y = -5;
+  rain2.x = randomNumber(0, 400);
+  }
+  if (rain2.isTouching(honey9))
+  {
+  number = number - 1;   
+  rain2.y = -5;
+  rain2.x = randomNumber(0, 400);
+  }
+  while (rain3.isTouching(honey))
+  {
+  number = number - 1;    
+  rain3.y = -5;
+  rain3.x = randomNumber(0, 400);
+  }
+  while (rain3.isTouching(honey2))
+  {
+  number = number - 1;    
+  rain3.y = -5;
+  rain3.x = randomNumber(0, 400);
+  }
+  while (rain3.isTouching(honey3))
+  {
+  number = number - 1;    
+  rain3.y = -5;
+  rain3.x = (0, 400);
+  }
+  while (rain3.isTouching(honey4))
+  {
+  number = number - 1;    
+  rain3.y = -5;
+  rain3.x = randomNumber(0, 400);
+  }
+  while (rain3.isTouching(honey5))
+  {
+  number = number - 1;  
+  rain3.y = -5;
+  rain3.x = randomNumber(0, 400);
+  }
+  while (rain3.isTouching(honey6))
+  {
+  number = number - 1;    
+  rain3.y = -5;
+  rain3.x = randomNumber(0, 400);
+  }
+  while (rain3.isTouching(honey7))
+  {
+  number = number - 1;   
+  rain3.y = -5;
+  rain3.x = randomNumber(0, 400);
+  }
+  while (rain3.isTouching(honey8))
+  {
+  number = number - 1;  
+  rain3.y = -5;
+  rain3.x = randomNumber(0, 400);
+  }
+  while (rain3.isTouching(honey9))
+  {
+  number = number - 1;  
+  rain3.y = -5;
+  rain3.x = randomNumber(0, 400);
+  }
+  }
+}
+
+//This function allows the user to move the bee around the x and y axis
+function draw()
+{
+//This calls fucntions within another function
+rainReset();
+rainAndHoney();
+  if (rain.y >= 400)
+  {
+  rain.y = 0;
+  rain.x = randomNumber(0, 400);
+  }
+  if (rain2.y >= 400)
+  {
+  rain2.y = 0;
+  rain2.x = randomNumber(0, 400);
+  }
+  if (rain3.y >= 400)
+  {
+  rain3.y = 0;
+  rain3.x = randomNumber(0, 400);
+  }
+// This sets the background and allows the user to move the bee
+  background("grey");
+  if (keyDown("LEFT_ARROW"))
+  {
+  bee.setAnimation("bee_1");
+  bee.x = bee.x - 12;
+  } else if ((keyDown("RIGHT_ARROW"))) 
+  {
+  bee.setAnimation("bee_2");
+  bee.x = bee.x + 12;
+  } else if (keyDown("UP_ARROW"))
+  {
+  bee.y = bee.y - 12;
+  } else if (keyDown("DOWN_ARROW"))
+  {
+  bee.y = bee.y + 15;
+  } 
+  beeMovement(400);
+  drawSprites();
+//This sets the text, including the time and the lives
+  stroke("white");
+  textSize(20);
+  if (number > 0)
+  {
+  text("Time: " + World.seconds, 20, 80);
+  }
+   textSize(30);
+  text("Lives: " + number,20,50);
+  if (World.seconds < 5)
+  {
+  textSize(25);
+  stroke("white");
+  text("Help Barry protect the honey", 35, 295);
+  text("for 60 seconds to win!", 70, 320);
+  }
+   if (World.seconds < 5)
+  {
+  textSize(25);
+  stroke("white");
+  text("Use Arrow Keys to Move", 45, 350);
+  }
+  if (World.seconds == 60)
+  {
+  textSize(30);
+  stroke("white");
+  text("You Win! Keep Going!", 40, 200);
+  }
+}
+
+
+//This resets the rain when the bee touches it
+function rainReset ()
+{
+  // The following uses a while loop
+  while (bee.isTouching(rain))
+  {
+  rain.y = -5;
+  rain.x = randomNumber(0, 400);
+  }
+  while (bee.isTouching(rain2))
+  {
+  rain2.y = -5;
+  rain2.x = randomNumber(0, 400);
+  }
+  while (bee.isTouching(rain3))
+  {
+  rain3.y = -5;
+  rain3.x = randomNumber(0, 400);
+  }
+//This destroys the sprites when the rain touches the honey 5 times
+  if (number === 0)
+{
+  bee.destroy();
+  rain.destroy();
+  rain2.destroy();
+  rain3.destroy();
+//This calls a function within another function
+  gameOvr();
+}
+}
+
+//This shows "game over" when the rain touches the honey 5 times
+function gameOvr()
+{
+  gameOver.setAnimation("gameOver");
+  gameOver.scale = 0.25;
+  if (number === 0)
+  {
+  gameOver.x = 200;
+  gameOver.y = 150;
+  }
+}
